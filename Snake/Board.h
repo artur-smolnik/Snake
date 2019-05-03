@@ -34,7 +34,8 @@ class Board
 	int rows, columns;
 	void setBoard();
 	void setStartingPosition();
-	void setHeadPosition();
+	
+	
 
 
 public:
@@ -45,5 +46,8 @@ public:
 	bool hasFood(int rows, int columns) { return board[rows][columns].hasFood; }
 
 	void setDirection(int move);
+	bool detectCollision();
+	void setHeadPosition();
+	void setNewSnakePosition();
 };
 

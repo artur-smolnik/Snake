@@ -9,6 +9,7 @@ public:
 	BoardController(BoardView &boardView, Board &board);
 	void draw();
 	void handleKeyboard();
+	
 	void handleEvent();
 	
 };

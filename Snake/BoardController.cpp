@@ -32,3 +32,14 @@ void BoardController::handleKeyboard()
 		}
 	} while (selectedKey != 27); //ESC
 }
+
+void BoardController::handleEvent()
+{
+	handleKeyboard();	
+	board.setHeadPosition();
+	if(!board.detectCollision())  board.setNewSnakePosition();
+	boardView.draw();
+	
+	
+}
+

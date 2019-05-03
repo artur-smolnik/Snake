@@ -18,10 +18,10 @@ int main()
 	BoardView boardView(board, renderWindow);
 	BoardController boardController(boardView, board);
 
-	boardController.draw();
+	
+	boardView.draw();
 	renderWindow.display();
-	Sleep(10000);
-
+	Sleep(3000);
 
 	//while (window.isOpen())
 	//{

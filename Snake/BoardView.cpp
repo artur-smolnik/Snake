@@ -5,7 +5,6 @@
 BoardView::BoardView(Board &board, sf::RenderWindow &renderWindow):board(board), renderWindow(renderWindow)
 {
 	setRectanglesVector();
-
 }
 
 void BoardView::setRectanglesVector()
@@ -23,7 +22,16 @@ void BoardView::setRectanglesVector()
 }
 
 void BoardView::draw()
-{
+{	
+	for (int i = 0; i < board.getRows(); i++)
+	{
+		for (int j = 0; j < board.getColumns(); j++)
+		{
+			if (board.hasSnake(i,j) == true) rectangles[j*board.getRows() + i].setFillColor(sf::Color::Red);
+			else rectangles[j*board.getRows() + i].setFillColor(sf::Color::Green);
+		}
+	}
+	
 	
 	for (int i = 0; i < rectangles.size(); i++)
 	{

@@ -8,6 +8,8 @@ Board::Board(int rows, int columns, GameMode gameMode)
 	this->columns = columns;
 	this->gameMode = NORMAL;
 	setBoard();
+	setStartingPosition();
+	direction = EAST;
 }
 
 void Board::setDirection(int move)
@@ -47,16 +49,21 @@ void Board::setBoard()
 
 void Board::setStartingPosition()
 {
-	headPosition.row = rand() % rows + 4;
-	headPosition.col = rand() % columns + 4;	
+	/*headPosition.row = rand() % rows ;
+	headPosition.col = rand() % columns;	*/
+	headPosition.row = 0;
+	headPosition.col = 0;
 	
 	board[headPosition.row][headPosition.col].hasSnake = true;
 	board[headPosition.row + 1][headPosition.col].hasSnake = true;
 	board[headPosition.row + 2][headPosition.col].hasSnake = true;
 
 	snakePosition.push_front(headPosition);
-	headPosition.row += 1;
-	headPosition.col -= 1;
+	headPosition.row += 1;	
+	snakePosition.push_front(headPosition);
+	headPosition.row += 1;	
+	snakePosition.push_front(headPosition);
+
 }
 
 void Board::setHeadPosition()
@@ -81,6 +88,19 @@ void Board::setHeadPosition()
 		if (headPosition.col - 1 < 0) headPosition.col = columns - 1;
 		else headPosition.col -= 1;
 	}
+}
+
+void Board::setNewSnakePosition()
+{	
+	board[snakePosition.back().row][snakePosition.back().col].hasSnake = false;
+	snakePosition.pop_back();
+	board[snakePosition.front().row][snakePosition.front().col].hasSnake = true;
+}
+
+bool Board::detectCollision()
+{
+	if (board[headPosition.row][headPosition.col].hasSnake) return true;
+	return false;
 }
 
 
