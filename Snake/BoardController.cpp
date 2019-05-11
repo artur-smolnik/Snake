@@ -11,35 +11,42 @@ BoardController::BoardController(BoardView &boardView, Board &board) : boardView
 {
 }
 
-void BoardController::draw()
+void BoardController::draw(sf::RenderWindow &renderWindow)
 {
-	boardView.draw();
+	boardView.draw(renderWindow);
 }
 
-void BoardController::handleKeyboard()
+void BoardController::handleKeyboard(sf::Event &event)
 {
-	unsigned char selectedKey;
-		
-	do
-	{
-		selectedKey = _getch();			
-		{	
-			while (_kbhit())
+	
+		if (event.type == sf::Event::KeyPressed) 
+		{
+			if (event.key.code == sf::Keyboard::Up && board.getDirection() != SOUTH) 
 			{
-				selectedKey = _getch();
-				board.setDirection(static_cast <int>(selectedKey));
+				board.setDirection(NORTH);
+			}
+			else if (event.key.code == sf::Keyboard::Right && board.getDirection() != WEST)
+			{
+				board.setDirection(EAST);
+
+			}
+			else if (event.key.code == sf::Keyboard::Down && board.getDirection() != NORTH)
+			{
+				board.setDirection(SOUTH);
+
+			}
+			else if (event.key.code == sf::Keyboard::Left && board.getDirection() != EAST)
+			{
+				board.setDirection(WEST);
 			}
 		}
-	} while (selectedKey != 27); //ESC
 }
 
-void BoardController::handleEvent()
+void BoardController::handleEvent(sf::Event &event)
 {
-	handleKeyboard();	
+	handleKeyboard(event);
 	board.setHeadPosition();
 	if(!board.detectCollision())  board.setNewSnakePosition();
-	boardView.draw();
-	
 	
 }
 

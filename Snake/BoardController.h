@@ -7,10 +7,10 @@ class BoardController
 	Board &board;
 public:
 	BoardController(BoardView &boardView, Board &board);
-	void draw();
-	void handleKeyboard();
+	void draw(sf::RenderWindow &renderWindow);
+	void handleKeyboard(sf::Event &event);
 	
-	void handleEvent();
+	void handleEvent(sf::Event &event);
 	
 };
 

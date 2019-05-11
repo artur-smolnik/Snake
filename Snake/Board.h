@@ -44,8 +44,9 @@ public:
 	int getColumns() { return columns; }
 	bool hasSnake(int rows, int columns) { return board[rows][columns].hasSnake; }
 	bool hasFood(int rows, int columns) { return board[rows][columns].hasFood; }
-
+	void setDirection(Directions dir) { direction = dir; }
 	void setDirection(int move);
+	Directions getDirection() { return direction; }
 	bool detectCollision();
 	void setHeadPosition();
 	void setNewSnakePosition();

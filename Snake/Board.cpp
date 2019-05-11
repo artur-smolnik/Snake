@@ -95,6 +95,7 @@ void Board::setNewSnakePosition()
 	board[snakePosition.back().row][snakePosition.back().col].hasSnake = false;
 	snakePosition.pop_back();
 	board[snakePosition.front().row][snakePosition.front().col].hasSnake = true;
+	snakePosition.push_front(headPosition);
 }
 
 bool Board::detectCollision()
