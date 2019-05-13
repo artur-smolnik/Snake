@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Board.h"
+#include <Windows.h>
 
 
 Board::Board(int rows, int columns, GameMode gameMode)
@@ -11,6 +12,7 @@ Board::Board(int rows, int columns, GameMode gameMode)
 	setStartingPosition();
 	direction = SOUTH;
 	setFoodOnBoard();
+	finished = false;
 }
 
 void Board::setDirection(int move)
@@ -96,8 +98,15 @@ void Board::setHeadPosition()
 
 void Board::setNewSnakePosition()
 {	
+	
 	if (isFoodEaten())
 	{
+		if (detectCollision())
+		{
+			finished = true;
+			//Sleep(3000);
+			return;
+		}
 		board[headPosition.row][headPosition.col].hasSnake = true;
 		snakePosition.push_front(headPosition);
 		board[headPosition.row][headPosition.col].hasFood = false;
@@ -105,12 +114,17 @@ void Board::setNewSnakePosition()
 	}
 	else
 	{
+		if (detectCollision())
+		{
+			finished = true;
+			//Sleep(3000);
+			return;
+		}
 		board[snakePosition.back().row][snakePosition.back().col].hasSnake = false;
 		snakePosition.pop_back();
 		board[headPosition.row][headPosition.col].hasSnake = true;
 		snakePosition.push_front(headPosition);
-	}
-	
+	}	
 }
 
 void Board::setFoodOnBoard()

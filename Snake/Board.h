@@ -34,6 +34,7 @@ class Board
 	int rows, columns;
 	void setBoard();
 	void setStartingPosition();
+	bool finished;
 	
 	
 
@@ -52,5 +53,6 @@ public:
 	void setNewSnakePosition();
 	void setFoodOnBoard();
 	bool isFoodEaten();
+	bool isFinished() { return finished; }
 };
 

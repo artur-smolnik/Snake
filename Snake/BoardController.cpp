@@ -9,6 +9,7 @@
 
 BoardController::BoardController(BoardView &boardView, Board &board) : boardView(boardView), board(board)
 {
+	
 }
 
 void BoardController::draw(sf::RenderWindow &renderWindow)
@@ -47,7 +48,14 @@ void BoardController::handleEvent(sf::Event &event)
 	handleKeyboard(event);
 	board.setHeadPosition();
 
-	if(!board.detectCollision())  board.setNewSnakePosition();
+	/*if(!board.detectCollision())  board.setNewSnakePosition();
+	else finished = true;*/
+	board.setNewSnakePosition();
 	
+}
+
+bool BoardController::isFinished()
+{
+	return board.isFinished();
 }
 

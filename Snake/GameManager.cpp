@@ -13,7 +13,7 @@ void GameManager::updateState() {
 			state = GAME;
 		break;
 	case GAME:
-		//if (minesweeperController.isFinished())
+		if (boardController.isFinished())
 			state = SCORE;
 		break;
 	case SCORE:
@@ -39,7 +39,7 @@ void GameManager::handleEvent(sf::Event &event)
 }
 
 void GameManager::draw(sf::RenderWindow &renderWindow) {
-	// updateState() ??
+	//updateState() ??
 	switch (state) {
 		//case INTRO:
 			//introController.draw(win);
@@ -51,4 +51,5 @@ void GameManager::draw(sf::RenderWindow &renderWindow) {
 		//scoreController.draw(win);
 		break;
 	}
+	updateState();
 }
