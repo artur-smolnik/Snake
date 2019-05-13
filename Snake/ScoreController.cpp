@@ -4,10 +4,14 @@
 
 ScoreController::ScoreController(ScoreView &scoreView) : scoreView(scoreView)
 {
+	finished = false;
+	again = false;
 }
 
 void ScoreController::handleEvent()
 {
+	finished = false;
+	again = false;
 	auto mouse_pos = sf::Mouse::getPosition(scoreView.getWindow());         // those two lines can be found on sfml forum 
 	auto translated_pos = scoreView.getWindow().mapPixelToCoords(mouse_pos);
 	//------------------ alternative version

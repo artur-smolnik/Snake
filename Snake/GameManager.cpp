@@ -18,7 +18,15 @@ void GameManager::updateState() {
 			state = SCORE;
 		break;
 	case SCORE:
-		// oops - tu powinniœmy jakoœ zamkn¹æ aplikacjê
+		if (scoreController.playAgain())
+		{
+			state = INTRO;
+			//scoreController.setPlayAgainToFalse();
+			introController.setFinishedToFalse();
+			//graphicController.setFinishedToFalse();
+			boardController.playAgain();
+		}
+		if (scoreController.isFinished()) exit(0);
 		break;
 	}
 }

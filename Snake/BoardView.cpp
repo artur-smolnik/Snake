@@ -58,7 +58,7 @@ void BoardView::draw(sf::RenderWindow &renderWindow)
 	}
 	else
 	{
-		Sleep(150);
+		Sleep(120);
 		for (int i = 0; i < board.getRows(); i++)
 		{
 			for (int j = 0; j < board.getColumns(); j++)

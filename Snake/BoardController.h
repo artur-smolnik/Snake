@@ -14,6 +14,7 @@ public:
 	void handleEvent(sf::Event &event);
 	//bool isFinished() { return finished; }
 	bool isFinished();
+	void playAgain() { board.playAgain(); }
 	
 };
 

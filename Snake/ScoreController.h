@@ -5,8 +5,7 @@ class ScoreController
 {
 	ScoreView &scoreView;
 	bool finished;
-	bool again = false;
-	
+	bool again;
 
 public:
 	ScoreController(ScoreView &scoreView);

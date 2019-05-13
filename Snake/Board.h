@@ -53,5 +53,6 @@ public:
 	void setHeadPosition();
 	bool isFinished() { return finished; }
 	int getSnakeLength() { return snakePosition.size(); }
+	void playAgain();
 };
 

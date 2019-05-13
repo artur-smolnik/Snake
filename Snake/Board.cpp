@@ -15,6 +15,16 @@ Board::Board(int rows, int columns, GameMode gameMode)
 	finished = false;
 }
 
+void Board::playAgain()
+{
+	snakePosition.clear();
+	setBoard();
+	setStartingPosition();
+	direction = SOUTH;
+	finished = false;
+	setFoodOnBoard();
+}
+
 void Board::setDirection(int move)
 {
 	//int UP = 72, DOWN = 80, ENTER = 13, LEFT = 75, RIGHT = 77;
@@ -51,9 +61,7 @@ void Board::setBoard()
 }
 
 void Board::setStartingPosition()
-{
-	/*headPosition.row = rand() % rows ;
-	headPosition.col = rand() % columns;	*/
+{	
 	headPosition.row = 0;
 	headPosition.col = 0;
 	
@@ -66,10 +74,6 @@ void Board::setStartingPosition()
 	snakePosition.push_front(headPosition);
 	headPosition.row += 1;	
 	snakePosition.push_front(headPosition);
-	headPosition.row += 1;
-	snakePosition.push_front(headPosition);
-	
-
 }
 
 void Board::setHeadPosition()
@@ -95,6 +99,7 @@ void Board::setHeadPosition()
 		else headPosition.col -= 1;
 	}
 }
+
 
 void Board::setNewSnakePosition()
 {	
