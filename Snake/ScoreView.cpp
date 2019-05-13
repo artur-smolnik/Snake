@@ -2,7 +2,7 @@
 #include "ScoreView.h"
 #include <string>
 
-ScoreView::ScoreView(Board &board) : board(board)
+ScoreView::ScoreView(Board &board, sf::RenderWindow &renderWIndow) : board(board), renderWIndow(renderWIndow)
 {
 	if (!font.loadFromFile("arial.ttf")) {
 		abort();
@@ -28,7 +28,6 @@ void ScoreView::draw(sf::RenderWindow &renderWindow)
 	txt.setPosition(275, 200);
 	txt.setFillColor(sf::Color::Red);
 	txt.setCharacterSize(20);
-
 	renderWindow.draw(rect_exit);
 	renderWindow.draw(txt);
 
@@ -40,7 +39,6 @@ void ScoreView::draw(sf::RenderWindow &renderWindow)
 	txt.setPosition(235, 310);
 	txt.setFillColor(sf::Color::Red);
 	txt.setCharacterSize(20);
-
 	renderWindow.draw(rect_play_again);
 	renderWindow.draw(txt);
 }

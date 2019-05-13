@@ -8,14 +8,10 @@
 class BoardView
 {
 	int x0 = 10, y0 = 10, size = 40, gap = 1;
-	std::vector<sf::RectangleShape> rectangles;
-	
+	std::vector<sf::RectangleShape> rectangles;	
 	Board &board;	
 	void setRectanglesVector();
 	void setWindowSize(sf::RenderWindow &renderWindow);
-	
-
-	
 
 public:
 	BoardView(Board &board);

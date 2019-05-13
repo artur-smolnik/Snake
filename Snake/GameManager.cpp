@@ -2,14 +2,15 @@
 #include "GameManager.h"
 
 
-GameManager::GameManager(BoardController &boardController, ScoreController &scoreController) : boardController(boardController), scoreController(scoreController)
+GameManager::GameManager(BoardController &boardController, ScoreController &scoreController, IntroController &introController) 
+	: boardController(boardController), scoreController(scoreController), introController(introController)
 {
-	state = GAME;
+	state = INTRO;
 }
 void GameManager::updateState() {
 	switch (state) {
 	case INTRO:
-		//if (introController.isFinished())
+		if (introController.isFinished())
 			state = GAME;
 		break;
 	case GAME:
@@ -26,13 +27,13 @@ void GameManager::handleEvent(sf::Event &event)
 {
 	switch (state) {
 	case INTRO:
-		//introController.handleEvent(event);
+		introController.handleEvent();
 		break;
 	case GAME:
 		boardController.handleEvent(event);
 		break;
 	case SCORE:
-		//scoreController.handleEvent(event);
+		scoreController.handleEvent();
 		break;
 	}
 	//updateState();
@@ -41,8 +42,8 @@ void GameManager::handleEvent(sf::Event &event)
 void GameManager::draw(sf::RenderWindow &renderWindow) {
 	//updateState() ??
 	switch (state) {
-		//case INTRO:
-			//introController.draw(win);
+	case INTRO:
+		introController.draw();
 		break;
 	case GAME:
 		boardController.draw(renderWindow);

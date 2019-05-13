@@ -6,6 +6,7 @@ class ScoreController
 	ScoreView &scoreView;
 	bool finished;
 	bool again = false;
+	
 
 public:
 	ScoreController(ScoreView &scoreView);
@@ -15,5 +16,6 @@ public:
 	bool playAgain() { return again; }
 	void setPlayAgainToFalse() { again = false; }
 	void setFinishedToFalse() { finished = false; }
+	
 };
 

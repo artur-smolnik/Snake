@@ -10,8 +10,12 @@ class ScoreView
 	bool isWindowSet; //prevent from window flickering
 	Board &board;
 	void setWindowSize(sf::RenderWindow &renderWindow);
+	sf::RenderWindow &renderWIndow;
 public:
-	ScoreView(Board &board);
+	ScoreView(Board &board, sf::RenderWindow &renderWIndow);
 	void draw(sf::RenderWindow &renderWindow);
+	sf::RectangleShape getRectExit() { return rect_exit; }
+	sf::RectangleShape getRectPlayAgain() { return rect_play_again; }
+	sf::RenderWindow &getWindow() { return renderWIndow; }
 };
 

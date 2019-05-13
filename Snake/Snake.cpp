@@ -9,6 +9,8 @@
 #include "GameManager.h"
 #include "ScoreController.h"
 #include "ScoreView.h"
+#include "IntroView.h"
+#include "IntroController.h"
 
 int main()
 {
@@ -20,21 +22,20 @@ int main()
 	Board board(20,10,NORMAL);
 	BoardView boardView(board);
 	BoardController boardController(boardView, board);
-	ScoreView scoreView(board);
+	ScoreView scoreView(board, renderWindow);
 	ScoreController scoreController(scoreView);
-	GameManager gameManager(boardController, scoreController);
+	IntroView introView(renderWindow);
+	IntroController introController(introView, board);
+
+	GameManager gameManager(boardController, scoreController, introController);
 	
-	//boardView.draw(renderWindow);
-	//renderWindow.display();
-	//Sleep(3000);
 	while (true)
 	{
 		sf::Event event;
 		renderWindow.pollEvent(event);
 		renderWindow.clear();
 		gameManager.handleEvent(event);
-		gameManager.draw(renderWindow);
-		//boardView.draw(renderWindow);
+		gameManager.draw(renderWindow);		
 		renderWindow.display();
 	}
 	while (renderWindow.isOpen())
