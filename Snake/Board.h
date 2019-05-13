@@ -54,5 +54,6 @@ public:
 	bool isFinished() { return finished; }
 	int getSnakeLength() { return snakePosition.size(); }
 	void playAgain();
+	std::list<HeadPosition> &getSnakePosition() { return snakePosition; }
 };
 

@@ -13,6 +13,7 @@ Board::Board(int rows, int columns, GameMode gameMode)
 	direction = SOUTH;
 	setFoodOnBoard();
 	finished = false;
+
 }
 
 void Board::playAgain()
