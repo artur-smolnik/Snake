@@ -2,7 +2,7 @@
 #include "GameManager.h"
 
 
-GameManager::GameManager(BoardController &boardController) : boardController(boardController)
+GameManager::GameManager(BoardController &boardController, ScoreController &scoreController) : boardController(boardController), scoreController(scoreController)
 {
 	state = GAME;
 }
@@ -48,7 +48,7 @@ void GameManager::draw(sf::RenderWindow &renderWindow) {
 		boardController.draw(renderWindow);
 		break;
 	case SCORE:
-		//scoreController.draw(win);
+		scoreController.draw(renderWindow);
 		break;
 	}
 	updateState();

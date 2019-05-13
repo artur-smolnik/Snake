@@ -7,6 +7,8 @@
 #include "BoardController.h"
 #include <Windows.h>
 #include "GameManager.h"
+#include "ScoreController.h"
+#include "ScoreView.h"
 
 int main()
 {
@@ -18,7 +20,9 @@ int main()
 	Board board(20,10,NORMAL);
 	BoardView boardView(board);
 	BoardController boardController(boardView, board);
-	GameManager gameManager(boardController);
+	ScoreView scoreView(board);
+	ScoreController scoreController(scoreView);
+	GameManager gameManager(boardController, scoreController);
 	
 	//boardView.draw(renderWindow);
 	//renderWindow.display();

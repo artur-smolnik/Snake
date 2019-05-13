@@ -172,6 +172,8 @@
     <ClInclude Include="BoardView.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="ScoreController.h" />
+    <ClInclude Include="ScoreView.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
@@ -184,6 +186,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ScoreController.cpp" />
+    <ClCompile Include="ScoreView.cpp" />
     <ClCompile Include="Snake.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
