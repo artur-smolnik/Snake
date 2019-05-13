@@ -33,6 +33,7 @@ void BoardView::draw(sf::RenderWindow &renderWindow)
 		for (int j = 0; j < board.getColumns(); j++)
 		{
 			if (board.hasSnake(i,j) == true) rectangles[i*board.getColumns() + j].setFillColor(sf::Color::Red);
+			else if(board.hasFood(i, j) && !board.hasSnake(i, j)) rectangles[i*board.getColumns() + j].setFillColor(sf::Color::Blue);
 			else rectangles[i*board.getColumns() + j].setFillColor(sf::Color::Green);
 		}
 	}	

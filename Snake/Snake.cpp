@@ -23,16 +23,16 @@ int main()
 	//boardView.draw(renderWindow);
 	//renderWindow.display();
 	//Sleep(3000);
-	//while (true)
-	//{
-	//	sf::Event event;
-	//	renderWindow.pollEvent(event);
-	//	renderWindow.clear();
-	//	gameManager.handleEvent(event);
-	//	gameManager.draw(renderWindow);
-	//	//boardView.draw(renderWindow);
-	//	renderWindow.display();
-	//}
+	while (true)
+	{
+		sf::Event event;
+		renderWindow.pollEvent(event);
+		renderWindow.clear();
+		gameManager.handleEvent(event);
+		gameManager.draw(renderWindow);
+		//boardView.draw(renderWindow);
+		renderWindow.display();
+	}
 	while (renderWindow.isOpen())
 	{
 

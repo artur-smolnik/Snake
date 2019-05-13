@@ -50,5 +50,7 @@ public:
 	bool detectCollision();
 	void setHeadPosition();
 	void setNewSnakePosition();
+	void setFoodOnBoard();
+	bool isFoodEaten();
 };
 

@@ -9,7 +9,8 @@ Board::Board(int rows, int columns, GameMode gameMode)
 	this->gameMode = NORMAL;
 	setBoard();
 	setStartingPosition();
-	direction = EAST;
+	direction = SOUTH;
+	setFoodOnBoard();
 }
 
 void Board::setDirection(int move)
@@ -63,6 +64,9 @@ void Board::setStartingPosition()
 	snakePosition.push_front(headPosition);
 	headPosition.row += 1;	
 	snakePosition.push_front(headPosition);
+	headPosition.row += 1;
+	snakePosition.push_front(headPosition);
+	
 
 }
 
@@ -92,10 +96,42 @@ void Board::setHeadPosition()
 
 void Board::setNewSnakePosition()
 {	
-	board[snakePosition.back().row][snakePosition.back().col].hasSnake = false;
-	snakePosition.pop_back();
-	board[snakePosition.front().row][snakePosition.front().col].hasSnake = true;
-	snakePosition.push_front(headPosition);
+	if (isFoodEaten())
+	{
+		board[headPosition.row][headPosition.col].hasSnake = true;
+		snakePosition.push_front(headPosition);
+		board[headPosition.row][headPosition.col].hasFood = false;
+		setFoodOnBoard();
+	}
+	else
+	{
+		board[snakePosition.back().row][snakePosition.back().col].hasSnake = false;
+		snakePosition.pop_back();
+		board[headPosition.row][headPosition.col].hasSnake = true;
+		snakePosition.push_front(headPosition);
+	}
+	
+}
+
+void Board::setFoodOnBoard()
+{
+	int row, col;
+	do
+	{
+		row = rand() % rows;
+		col = rand() % columns;
+		if (!board[row][col].hasSnake)
+		{
+			board[row][col].hasFood = true;
+			
+		}
+	} while (!board[row][col].hasFood);
+}
+
+bool Board::isFoodEaten()
+{
+	if (board[headPosition.row][headPosition.col].hasFood) return true;
+	else return false;
 }
 
 bool Board::detectCollision()

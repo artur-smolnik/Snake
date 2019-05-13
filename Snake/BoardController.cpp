@@ -46,6 +46,7 @@ void BoardController::handleEvent(sf::Event &event)
 {
 	handleKeyboard(event);
 	board.setHeadPosition();
+
 	if(!board.detectCollision())  board.setNewSnakePosition();
 	
 }
