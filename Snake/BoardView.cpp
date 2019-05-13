@@ -24,9 +24,20 @@ void BoardView::setRectanglesVector()
 	}
 }
 
+void BoardView::setWindowSize(sf::RenderWindow &renderWindow)
+{
+	int x, y;
+	x = board.getColumns() * size + 2 * x0 + (board.getColumns() - 1)*gap;
+	y = board.getRows() * size + 2 * y0 + (board.getRows() - 1)*gap;
+	sf::View view;
+	view.setSize(renderWindow.getSize().x, renderWindow.getSize().y);
+	renderWindow.setView(view);
+	renderWindow.create(sf::VideoMode(x, y), "SNAKE");	
+}
+
 void BoardView::draw(sf::RenderWindow &renderWindow)
 {		
-	
+	if (!(renderWindow.getSize().x == board.getColumns() * size + 2 * x0 + (board.getColumns() - 1)*gap && renderWindow.getSize().y == board.getRows() * size + 2 * y0 + (board.getRows() - 1)*gap)) setWindowSize(renderWindow);
 	if (board.isFinished())
 	{
 		for (int i = 0; i < board.getRows(); i++)

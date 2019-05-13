@@ -31,13 +31,14 @@ class Board
 	GameMode gameMode;
 	Directions direction;
 	Field board[100][100];
+	bool finished;
+
 	int rows, columns;
 	void setBoard();
 	void setStartingPosition();
-	bool finished;
-	
-	
-
+	void setFoodOnBoard();
+	bool isFoodEaten();
+	bool detectCollision();
 
 public:
 	Board(int rows, int columns, GameMode gameMode);	
@@ -48,11 +49,8 @@ public:
 	void setDirection(Directions dir) { direction = dir; }
 	void setDirection(int move);
 	Directions getDirection() { return direction; }
-	bool detectCollision();
-	void setHeadPosition();
 	void setNewSnakePosition();
-	void setFoodOnBoard();
-	bool isFoodEaten();
+	void setHeadPosition();
 	bool isFinished() { return finished; }
 };
 

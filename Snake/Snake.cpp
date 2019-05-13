@@ -15,7 +15,7 @@ int main()
 
 	sf::RenderWindow renderWindow(sf::VideoMode(600, 500), "SNAKE");
 
-	Board board(10,10,NORMAL);
+	Board board(20,10,NORMAL);
 	BoardView boardView(board);
 	BoardController boardController(boardView, board);
 	GameManager gameManager(boardController);
