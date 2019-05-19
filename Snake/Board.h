@@ -13,11 +13,6 @@ enum Directions
 	NORTH, EAST, SOUTH, WEST
 };
 
-enum GameMode
-{
-	EASY, NORMAL, HARD
-};
-
 class Board
 {
 	struct HeadPosition
@@ -28,7 +23,6 @@ class Board
 
 	std::list<HeadPosition> snakePosition;
 	HeadPosition headPosition;
-	GameMode gameMode;
 	Directions direction;
 	Field board[100][100];
 	bool finished;
@@ -41,13 +35,12 @@ class Board
 	bool detectCollision();
 
 public:
-	Board(int rows, int columns, GameMode gameMode);	
+	Board(int rows, int columns);	
 	int getRows() { return rows; }
 	int getColumns() { return columns; }
 	bool hasSnake(int rows, int columns) { return board[rows][columns].hasSnake; }
 	bool hasFood(int rows, int columns) { return board[rows][columns].hasFood; }
 	void setDirection(Directions dir) { direction = dir; }
-	void setDirection(int move);
 	Directions getDirection() { return direction; }
 	void setNewSnakePosition();
 	void setHeadPosition();

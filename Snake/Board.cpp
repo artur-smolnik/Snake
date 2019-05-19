@@ -3,11 +3,10 @@
 #include <Windows.h>
 
 
-Board::Board(int rows, int columns, GameMode gameMode)
+Board::Board(int rows, int columns)
 {
 	this->rows = rows;
 	this->columns = columns;
-	this->gameMode = NORMAL;
 	setBoard();
 	setStartingPosition();
 	direction = SOUTH;
@@ -26,28 +25,6 @@ void Board::playAgain()
 	setFoodOnBoard();
 }
 
-void Board::setDirection(int move)
-{
-	//int UP = 72, DOWN = 80, ENTER = 13, LEFT = 75, RIGHT = 77;
-
-	switch (move)
-	{
-	case 72: 
-		direction = NORTH;
-		break;
-	case  77:
-		direction = EAST;
-		break;
-	case 80:
-		direction = SOUTH;
-		break;
-	case 75:
-		direction = WEST;
-		break;
-	default:
-		break;
-	}
-}
 
 void Board::setBoard()
 {
@@ -110,7 +87,6 @@ void Board::setNewSnakePosition()
 		if (detectCollision())
 		{
 			finished = true;
-			//Sleep(3000);
 			return;
 		}
 		board[headPosition.row][headPosition.col].hasSnake = true;
@@ -123,7 +99,6 @@ void Board::setNewSnakePosition()
 		if (detectCollision())
 		{
 			finished = true;
-			//Sleep(3000);
 			return;
 		}
 		board[snakePosition.back().row][snakePosition.back().col].hasSnake = false;

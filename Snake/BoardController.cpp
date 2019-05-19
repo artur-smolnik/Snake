@@ -24,19 +24,16 @@ void BoardController::handleKeyboard(sf::Event &event)
 		else if (event.key.code == sf::Keyboard::Right && board.getDirection() != WEST)
 		{
 			board.setDirection(EAST);
-
 		}
 		else if (event.key.code == sf::Keyboard::Down && board.getDirection() != NORTH)
 		{
 			board.setDirection(SOUTH);
-
 		}
 		else if (event.key.code == sf::Keyboard::Left && board.getDirection() != EAST)
 		{
 			board.setDirection(WEST);
 		}
-	}
-		
+	}		
 }
 
 void BoardController::handleEvent(sf::Event &event)

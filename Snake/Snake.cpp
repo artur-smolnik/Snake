@@ -19,7 +19,7 @@ int main()
 
 	sf::RenderWindow renderWindow(sf::VideoMode(600, 500), "SNAKE");
 
-	Board board(20,10,NORMAL);
+	Board board(10,10);
 	BoardView boardView(board);
 	BoardController boardController(boardView, board);
 	ScoreView scoreView(board, renderWindow);
@@ -29,25 +29,13 @@ int main()
 
 	GameManager gameManager(boardController, scoreController, introController);
 	
-	while (true)
-	{
-		sf::Event event;
-		renderWindow.pollEvent(event);
-		renderWindow.clear();
-		gameManager.handleEvent(event);
-		gameManager.draw(renderWindow);		
-		renderWindow.display();
-	}
 	while (renderWindow.isOpen())
 	{
-
 		sf::Event event;
-
 		while (renderWindow.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)renderWindow.close();
 		}
-
 		renderWindow.clear();
 		gameManager.handleEvent(event);
 		gameManager.draw(renderWindow);
