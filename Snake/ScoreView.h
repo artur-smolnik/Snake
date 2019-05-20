@@ -7,7 +7,6 @@ class ScoreView
 	sf::RectangleShape rect_play_again;
 	sf::Font font;	
 	sf::Text txt;
-	bool isWindowSet; //prevent from window flickering
 	Board &board;
 	void setWindowSize(sf::RenderWindow &renderWindow);
 	sf::RenderWindow &renderWIndow;

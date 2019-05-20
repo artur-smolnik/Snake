@@ -4,9 +4,6 @@
 #include <conio.h>
 #include <stdlib.h>
 
-
-
-
 BoardController::BoardController(BoardView &boardView, Board &board) : boardView(boardView), board(board)
 {
 	

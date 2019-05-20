@@ -14,15 +14,7 @@ void ScoreController::handleEvent()
 	again = false;
 	auto mouse_pos = sf::Mouse::getPosition(scoreView.getWindow());         // those two lines can be found on sfml forum 
 	auto translated_pos = scoreView.getWindow().mapPixelToCoords(mouse_pos);
-	//------------------ alternative version
-	/*if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
-	{		
-		if (scoreView.getRectExit().getGlobalBounds().contains(scoreView.getWindow().mapPixelToCoords(sf::Mouse::getPosition(scoreView.getWindow()))))
-		{
-			finished = true;
-		}
-	}*/
-	//------------------
+		
 	if (scoreView.getRectExit().getGlobalBounds().contains(translated_pos)) {
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 		{

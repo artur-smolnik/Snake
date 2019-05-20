@@ -4,9 +4,6 @@
 #include <string>
 #include <iostream>
 
-
-
-
 BoardView::BoardView(Board &board) : board(board)
 {
 	setRectanglesVector();
@@ -84,33 +81,6 @@ void BoardView::draw(sf::RenderWindow &renderWindow)
 	else
 	{
 		Sleep(120);
-		/*for (int i = 0; i < board.getSnakePosition().size(); i++)
-		{
-			if (i == 0)
-			{
-				rectangles[board.getSnakePosition().front().row*board.getColumns() + board.getSnakePosition().front().col].setTexture(&head);
-			}
-			else if(i > 0 && i < board.getSnakePosition().size() - 1)
-			{
-				rectangles[board.getSnakePosition().front().row*board.getColumns() + board.getSnakePosition().front().col].setTexture(&body);
-			}
-			else if (i == board.getSnakePosition().size() - 1)
-			{
-				rectangles[board.getSnakePosition().front().row*board.getColumns() + board.getSnakePosition().front().col].setTexture(&tail);
-			}
-		}
-		for (int i = 0; i < board.getRows(); i++)
-		{
-			for (int j = 0; j < board.getColumns(); j++)
-			{				
-				if (board.hasFood(i, j)) rectangles[i*board.getColumns() + j].setTexture(&food);
-				if (!board.hasFood(i, j) && !board.hasSnake(i, j)) rectangles[i*board.getColumns() + j].setTexture(&emptyField);
-			}
-		}
-
-*/
-
-		
 		for (int i = 0; i < board.getRows(); i++)
 		{
 			for (int j = 0; j < board.getColumns(); j++)
